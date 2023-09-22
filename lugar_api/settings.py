@@ -64,6 +64,7 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     '*','kayra.alwaysdata.net','127.0.0.1'
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
