@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-
+from rest_framework import filters
 from .models import Domaine, Ecole, Enseigne, Metier, Question, Reponse
 from .serializers import (DomaineSerializer, EcoleSerializer,
                           EnseigneSerializer, MetierSerializer,
@@ -13,7 +13,8 @@ class EnseigneViewSet(ModelViewSet):
 
 
 class EcoleViewSet(ModelViewSet):
-
+    search_fields = ['nom',]
+    filter_backends = (filters.SearchFilter,)
     serializer_class = EcoleSerializer
     queryset = Ecole.objects.all()
 
@@ -25,7 +26,8 @@ class DomaineViewSet(ModelViewSet):
 
 
 class MetierViewSet(ModelViewSet):
-
+    search_fields = ['name','qualite','salaire']
+    filter_backends = (filters.SearchFilter,)
     serializer_class = MetierSerializer
     queryset = Metier.objects.all()
 
