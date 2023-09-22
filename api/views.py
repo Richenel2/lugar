@@ -17,6 +17,7 @@ class EcoleViewSet(ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     serializer_class = EcoleSerializer
     queryset = Ecole.objects.all()
+    
 
 
 class DomaineViewSet(ModelViewSet):

@@ -11,6 +11,9 @@ class Ecole(models.Model):
     note = models.FloatField()
     contact = models.CharField(max_length=16)
     image = models.URLField(max_length=10000)
+    
+    def __str__(self) -> str:
+        return self.nom
 
 
 class Domaine(models.Model):
@@ -22,6 +25,10 @@ class Domaine(models.Model):
 
     )
     image = models.URLField(max_length=100000,)
+    
+    def __str__(self) -> str:
+        return self.nom
+    
 
 
 class Enseigne(models.Model):
@@ -41,11 +48,20 @@ class Metier (models.Model):
         max_length=(4*33)
     )
     image = models.URLField(max_length=10000,)
+    
+    def __str__(self) -> str:
+        return self.name
 
 
 class Reponse (models.Model):
     reponse = models.CharField(max_length=255)
+    
+    def __str__(self) -> str:
+        return self.reponse
 
 
 class Question (models.Model):
     question = models.TextField()
+    
+    def __str__(self) -> str:
+        return self.question
