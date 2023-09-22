@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jq1a%kb8a1#hf9$f@(m**ua%y(52l8#k*g06ur%99qec*&35ls
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = True
-ALLOWED_HOSTS = ['kayra.alwaysdata.net', '127.0.0.1',"*"]
+ALLOWED_HOSTS = ['kayra.alwaysdata.net', '127.0.0.1', "*"]
 
 
 # Application definition
@@ -54,7 +54,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'lugar_api.urls'
 REST_FRAMEWORK = {
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema', 
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2, }
 
 TEMPLATES = [
     {
@@ -122,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#STATIC_ROOT = os.path.join(BASE_DIR, "static"),
+# STATIC_ROOT = os.path.join(BASE_DIR, "static"),
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
 from .models import Domaine, Ecole, Enseigne, Metier, Question, Reponse
+from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer,
                           EnseigneSerializer, MetierSerializer,
                           QuestionSerializer, ReponseSerializer)
@@ -13,6 +14,8 @@ class EnseigneViewSet(ModelViewSet):
 
 
 class EcoleViewSet(ModelViewSet):
+
+    pagination_class = CustomPagination
     search_fields = ['nom',]
     filter_backends = (filters.SearchFilter,)
     serializer_class = EcoleSerializer
