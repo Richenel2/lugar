@@ -28,7 +28,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(api_urls)),
     path('docs/', include_docs_urls(title='Api')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG: 
     urlpatterns += static(settings.MEDIA_URL,
