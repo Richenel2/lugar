@@ -6,7 +6,7 @@ from django_mysql.models import ListCharField
 
 class Ecole(models.Model):
     nom = models.CharField(max_length=255)
-    email = models.EmailField()
+    link = models.URLField()
     description = models.TextField()
     note = models.FloatField()
     contact = models.CharField(max_length=16)
