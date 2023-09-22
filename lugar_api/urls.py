@@ -21,14 +21,14 @@ from django.urls import path
 from api import urls as api_urls
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(api_urls)),
     path('docs/', include_docs_urls(title='Api')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + staticfiles_urlpatterns()
 
 if settings.DEBUG: 
     urlpatterns += static(settings.MEDIA_URL,
