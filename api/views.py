@@ -43,6 +43,7 @@ class DomaineViewSet(ModelViewSet):
 
 
 class MetierViewSet(ModelViewSet):
+    pagination_class = CustomPagination
     search_fields = ['name','qualite','salaire']
     filter_backends = (filters.SearchFilter,)
     serializer_class = MetierSerializer
