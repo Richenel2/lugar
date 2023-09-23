@@ -1,5 +1,5 @@
 
-from .models import Enseigne,Ecole,Domaine,Metier,Question,Reponse
+from .models import Ecole,Domaine,Metier,Question,Reponse
 from rest_framework import serializers
 
 class EcoleSerializer(serializers.ModelSerializer):
@@ -8,10 +8,10 @@ class EcoleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EnseigneSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enseigne
-        fields = '__all__'
+# class EnseigneSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Enseigne
+#         fields = '__all__'
 
 
 class DomaineSerializer(serializers.ModelSerializer):

@@ -5,14 +5,14 @@ from django.shortcuts import get_object_or_404,get_list_or_404
 from .models import Domaine, Ecole, Enseigne, Metier, Question, Reponse
 from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer,
-                          EnseigneSerializer, MetierSerializer,
+                           MetierSerializer,
                           QuestionSerializer, ReponseSerializer)
 
 
-class EnseigneViewSet(ModelViewSet):
+# class EnseigneViewSet(ModelViewSet):
 
-    serializer_class = EnseigneSerializer
-    queryset = Enseigne.objects.all()
+#     serializer_class = EnseigneSerializer
+#     queryset = Enseigne.objects.all()
 
 
 class EcoleViewSet(ModelViewSet):
@@ -23,13 +23,13 @@ class EcoleViewSet(ModelViewSet):
     serializer_class = EcoleSerializer
     queryset = Ecole.objects.all()
 
-    def retrieve(self, request, pk=None):
-        queryset = Ecole.objects.all()
-        user = get_object_or_404(queryset, pk=pk)
-        serializer = EcoleSerializer(user)
-        enseigne = get_list_or_404(Enseigne.objects.all(), ecole=pk)
-        serializer.data["domaine"] = list(map(lambda x:EnseigneSerializer(x).data,enseigne))
-        return Response(serializer.data)
+    # def retrieve(self, request, pk=None):
+    #     queryset = Ecole.objects.all()
+    #     user = get_object_or_404(queryset, pk=pk)
+    #     serializer = EcoleSerializer(user)
+    #     enseigne = get_list_or_404(Enseigne.objects.all(), ecole=pk)
+    #     serializer.data["domaine"] = list(map(lambda x:EnseigneSerializer(x).data,enseigne))
+    #     return Response(serializer.data)
     
 
 
