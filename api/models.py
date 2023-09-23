@@ -8,8 +8,8 @@ class Domaine(models.Model):
     name = models.CharField(max_length=255)
     def __str__(self) -> str:
         return self.name
-    fee = models.IntegerField()
-    year = models.IntegerField()
+    fee = models.IntegerField(default=100000)
+    year = models.IntegerField(default=3)
 
 
 class Ecole(models.Model):
