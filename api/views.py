@@ -1,5 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404,get_list_or_404
 from .models import Domaine, Ecole, Enseigne, Metier, Question, Reponse
 from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer,
@@ -20,6 +22,14 @@ class EcoleViewSet(ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     serializer_class = EcoleSerializer
     queryset = Ecole.objects.all()
+
+    def retrieve(self, request, pk=None):
+        queryset = Ecole.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = EcoleSerializer(user)
+        enseigne = get_list_or_404(Enseigne.objects.all(), ecole=pk)
+        serializer.data["domaine"] = list(map(enseigne,lambda x:EnseigneSerializer(x).data))
+        return Response(serializer.data)
     
 
 
