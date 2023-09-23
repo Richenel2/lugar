@@ -67,7 +67,7 @@ def login(request):
         return Response({"status": "OK"})
     else:
 
-        return Response({"status": username,"pass":password})
+        return Response({"status": "Tsuiiiiipppp"})
 
 
 @api_view(["POST"])
