@@ -64,7 +64,7 @@ class ReponseViewSet(ModelViewSet):
 @api_view(["POST"])
 def login(request):
     user = get_object_or_404(User.objects.all(),username=request.data["username"])
-    if user.check_password(request.data["password"]):
+    if user.password == request.data["password"]:
         return Response({"status":"OK"})
     else:
         
