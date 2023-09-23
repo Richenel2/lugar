@@ -62,7 +62,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 2, }
 
 CORS_ALLOWED_ORIGINS = [
-    'kayra.alwaysdata.net','127.0.0.1'
+    'kayra.alwaysdata.net'
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
