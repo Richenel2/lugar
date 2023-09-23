@@ -2,7 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404,get_list_or_404
-from .models import Domaine, Ecole, Enseigne, Metier, Question, Reponse
+from .models import Domaine, Ecole, Metier, Question, Reponse
 from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer,
                            MetierSerializer,
