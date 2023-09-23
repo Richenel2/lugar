@@ -28,7 +28,7 @@ class EcoleViewSet(ModelViewSet):
         user = get_object_or_404(queryset, pk=pk)
         serializer = EcoleSerializer(user)
         enseigne = get_list_or_404(Enseigne.objects.all(), ecole=pk)
-        serializer.data["domaine"] = list(map(lambda x:EnseigneSerializer(x).data),enseigne)
+        serializer.data["domaine"] = list(map(lambda x:EnseigneSerializer(x).data,enseigne))
         return Response(serializer.data)
     
 
