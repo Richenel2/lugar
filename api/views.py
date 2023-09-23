@@ -69,4 +69,5 @@ def login(request):
 def register(request):
     user = User(email=request.data["email"],
                 password=request.data["password"], username=request.data["username"])
+    user.save()
     return Response({"status": "OK"})
