@@ -28,7 +28,7 @@ class Ecole(models.Model):
     contact = models.CharField(max_length=16)
     img = models.URLField()
     fee = models.IntegerField()
-    domaine = models.ManyToManyField(Domaine,null=True)
+    domaine = models.ManyToManyField(Domaine)
     def __str__(self) -> str:
         return self.name
 
@@ -39,7 +39,7 @@ class Ecole(models.Model):
 #     ecole = models.ForeignKey(Ecole, on_delete=models.CASCADE)
 #     year = models.IntegerField()
 #     fee = models.IntegerField()
-
+50
 
 class Metier (models.Model):
     name = models.CharField(max_length=255)
@@ -51,7 +51,7 @@ class Metier (models.Model):
         max_length=(4*33)
     )
     img = models.URLField(max_length=10000,)
-    domaine = models.ManyToManyField(Domaine,null=True)
+    domaine = models.ManyToManyField(Domaine)
     def __str__(self) -> str:
         return self.name
 
