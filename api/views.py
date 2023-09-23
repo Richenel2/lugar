@@ -67,7 +67,8 @@ def login(request):
     if user.check_password(request.data["password"]):
         return Response({"status":"OK"})
     else:
-        raise Http404
+        
+        return Response({"status":"Tsuipppp"})
 
 @api_view(["POST"])
 def register(request):
