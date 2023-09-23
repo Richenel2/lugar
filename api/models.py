@@ -49,18 +49,19 @@ class Metier (models.Model):
         return self.name
 
 
-class Reponse (models.Model):
-    answer = models.CharField(max_length=255)
-    domaines = models.ManyToManyField(Domaine)
-    point = models.IntegerField(default=10)
+# class Reponse (models.Model):
+#     answer = models.CharField(max_length=255)
+#     domaines = models.ManyToManyField(Domaine)
+#     point = models.IntegerField(default=10)
 
-    def __str__(self) -> str:
-        return self.reponse
+#     def __str__(self) -> str:
+#         return self.reponse
 
 
 class Question (models.Model):
     question = models.TextField()
-    answers = models.ManyToManyField(Reponse)
+    # answers = models.ManyToManyField(Reponse)
+    domaines = models.ManyToManyField(Domaine)
 
     def __str__(self) -> str:
         return self.question
