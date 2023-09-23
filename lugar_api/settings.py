@@ -59,7 +59,7 @@ ROOT_URLCONF = 'lugar_api.urls'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2, }
+    'PAGE_SIZE': 20, }
 
 # CORS_ALLOWED_ORIGINS = [
 #     'kayra.alwaysdata.net'
