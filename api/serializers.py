@@ -9,7 +9,7 @@ class DomaineSerializer(serializers.ModelSerializer):
 
 class EcoleSerializer(serializers.ModelSerializer):
 
-    domaine = DomaineSerializer(read_only=True, many=True)
+    departments = DomaineSerializer(read_only=True, many=True)
     class Meta:
         model = Ecole
         fields = '__all__'
@@ -24,7 +24,7 @@ class EcoleSerializer(serializers.ModelSerializer):
 
 class MetierSerializer(serializers.ModelSerializer):
 
-    domaine = DomaineSerializer(read_only=True, many=True)
+    departments = DomaineSerializer(read_only=True, many=True)
     class Meta:
         model = Metier
         fields = '__all__'
@@ -39,7 +39,7 @@ class ReponseSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
 
-    response = ReponseSerializer(read_only=True, many=True)
+    answers = ReponseSerializer(read_only=True, many=True)
     class Meta:
         model = Question
         fields = '__all__'

@@ -28,7 +28,7 @@ class Ecole(models.Model):
     contact = models.CharField(max_length=16)
     img = models.URLField()
     fee = models.IntegerField()
-    domaine = models.ManyToManyField(Domaine)
+    departments = models.ManyToManyField(Domaine)
     def __str__(self) -> str:
         return self.name
 
@@ -51,14 +51,14 @@ class Metier (models.Model):
         max_length=(4*33)
     )
     img = models.URLField(max_length=10000,)
-    domaine = models.ManyToManyField(Domaine)
+    departments = models.ManyToManyField(Domaine)
     def __str__(self) -> str:
         return self.name
 
 
 class Reponse (models.Model):
-    reponse = models.CharField(max_length=255)
-    domaines = models.ManyToManyField(Domaine, null=True)
+    answer = models.CharField(max_length=255)
+    domaines = models.ManyToManyField(Domaine)
     point = models.IntegerField(default=10)
     def __str__(self) -> str:
         return self.reponse
@@ -66,6 +66,6 @@ class Reponse (models.Model):
 
 class Question (models.Model):
     question = models.TextField()
-    reponse = models.ManyToManyField(Reponse, null=True)
+    answers = models.ManyToManyField(Reponse)
     def __str__(self) -> str:
         return self.question

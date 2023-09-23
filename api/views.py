@@ -1,7 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
+from django.http import Http404
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404,get_list_or_404
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from .models import Domaine, Ecole, Metier, Question, Reponse
 from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer,
@@ -56,3 +59,16 @@ class ReponseViewSet(ModelViewSet):
 
     serializer_class = ReponseSerializer
     queryset = Reponse.objects.all()
+
+@api_view(["POST"])
+def login(request):
+    user = get_object_or_404(User.objects.all(),email=request.data["email"])
+    if user.check_password(request.data["password"]):
+        return Response({"status":"OK"})
+    else:
+        raise Http404
+
+@api_view(["POST"])
+def register(request):
+    user = User(email=request.data["email"],password=request.data["password"])
+    return Response({"status":"OK"})
