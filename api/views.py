@@ -4,10 +4,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from .models import Domaine, Ecole, Metier, Question, Reponse
+from .models import Domaine, Ecole, Metier, Question
 from .pagination import CustomPagination
 from .serializers import (DomaineSerializer, EcoleSerializer, MetierSerializer,
-                          QuestionSerializer, ReponseSerializer)
+                          QuestionSerializer)
 
 # class EnseigneViewSet(ModelViewSet):
 
@@ -51,11 +51,6 @@ class QuestionViewSet(ModelViewSet):
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
 
-
-class ReponseViewSet(ModelViewSet):
-
-    serializer_class = ReponseSerializer
-    queryset = Reponse.objects.all()
 
 
 @api_view(["POST"])

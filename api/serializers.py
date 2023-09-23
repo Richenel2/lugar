@@ -1,5 +1,5 @@
 
-from .models import Ecole,Domaine,Metier,Question,Reponse
+from .models import Ecole,Domaine,Metier,Question
 from rest_framework import serializers
 
 class DomaineSerializer(serializers.ModelSerializer):
@@ -30,19 +30,18 @@ class MetierSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ReponseSerializer(serializers.ModelSerializer):
+# class ReponseSerializer(serializers.ModelSerializer):
 
-    domaines = DomaineSerializer(read_only=True, many=True)
-    class Meta:
-        model = Reponse
-        fields = '__all__'
+#     domaines = DomaineSerializer(read_only=True, many=True)
+#     class Meta:
+#         model = Reponse
+#         fields = '__all__'
 
 class QuestionSerializer(serializers.ModelSerializer):
 
-    answers = ReponseSerializer(read_only=True, many=True)
     class Meta:
         model = Question
-        fields = '__all__'
+        fields = ("question")
 
 
 
