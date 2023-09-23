@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User, auth
-from django.shortcuts import get_object_or_404
 from rest_framework import filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -68,7 +67,7 @@ def login(request):
         return Response({"status": "OK"})
     else:
 
-        return Response({"status": "Tsuipppp"})
+        return Response({"status": username,"pass":password})
 
 
 @api_view(["POST"])
