@@ -6,13 +6,6 @@ from django_mysql.models import ListCharField
 
 class Domaine(models.Model):
     name = models.CharField(max_length=255)
-    matieres_principales = ListCharField(
-        base_field=models.CharField(max_length=32),
-        size=4,
-        max_length=(4*33)
-    )
-    img = models.URLField(max_length=100000,)
-
     def __str__(self) -> str:
         return self.name
     fee = models.IntegerField()
