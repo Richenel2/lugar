@@ -2,7 +2,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from api.views import (DomaineViewSet, EcoleViewSet,
-                       MetierViewSet, QuestionViewSet,login,register)
+                       MetierViewSet, QuestionViewSet,login,register,corrige)
 
 router = DefaultRouter()
 router.register(r'ecole', EcoleViewSet, basename='ecole')
@@ -14,5 +14,6 @@ router.register(r'metier', MetierViewSet, basename='metier')
 urlpatterns = [
     path(r'login/',login),
     path(r'register/',register),
+    path(r'corrige/',corrige),
     path(r'', include(router.urls)),
 ]

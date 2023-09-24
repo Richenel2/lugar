@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User, auth
+from django.shortcuts import get_object_or_404
 from rest_framework import filters
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -52,7 +53,6 @@ class QuestionViewSet(ModelViewSet):
     queryset = Question.objects.all()
 
 
-
 @api_view(["POST"])
 def login(request):
     username = request.data['username']
@@ -63,6 +63,40 @@ def login(request):
     else:
 
         return Response({"status": "Tsuiiiiipppp"})
+
+
+@api_view(["POST"])
+def corrige(request):
+    data = request.data
+    school = {}
+    met = {}
+    for rep in data:
+        question = get_object_or_404(Question, pk=rep['id'])
+        schoolSet = set()
+        metierSet = set()
+        for domaine in question.domaines:
+            ecoles = Ecole.objects.filter(domaine=domaine)
+            metiers = Metier.objects.filter(domaine=domaine)
+            for ecole in ecoles:
+                schoolSet.add(ecole.id)
+            for metier in metiers:
+                metierSet.add(metier.id)
+        point = (rep["reponse"] - 3)*10
+        for sch in schoolSet:
+            try:
+                school[sch] += point
+            except KeyError:
+                school[sch] = point
+        for sch in metierSet:
+            try:
+                met[sch] += point
+            except KeyError:
+                met[sch] = point
+        school = dict(sorted(school.items(), key=lambda item: item[1]))
+        met = dict(sorted(met.items(), key=lambda item: item[1]))
+        school = dict(school.items()[:3])
+        met = dict(met.items()[:3])
+    return Response(list(map(lambda x: EcoleSerializer(get_object_or_404(Ecole, pk=x)).data, school.keys())))
 
 
 @api_view(["POST"])
