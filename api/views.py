@@ -68,8 +68,8 @@ def login(request):
 @api_view(["POST"])
 def corrige(request):
     data = request.data
-    school = {}
-    met = {}
+    school = dict()
+    met = dict()
     for rep in data:
         question = get_object_or_404(Question, pk=rep['id'])
         schoolSet = set()
