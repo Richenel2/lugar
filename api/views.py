@@ -96,7 +96,11 @@ def corrige(request):
     met = dict(sorted(met.items(), key=lambda item: item[1]))
     school =list( school.keys())[:3]
     met = list(met.keys())[:3]
-    return Response(list(map(lambda x: EcoleSerializer(get_object_or_404(Ecole, pk=x)).data, school)))
+    result = {
+        "university":list(map(lambda x: EcoleSerializer(get_object_or_404(Ecole, pk=x)).data, school)),
+        "metier":list(map(lambda x: MetierSerializer(get_object_or_404(Metier, pk=x)).data, met))
+    }
+    return Response(result)
 
 
 @api_view(["POST"])
