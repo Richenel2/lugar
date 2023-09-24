@@ -75,8 +75,8 @@ def corrige(request):
         schoolSet = set()
         metierSet = set()
         for domaine in question.domaines.all():
-            ecoles = Ecole.objects.filter(domaine=domaine)
-            metiers = Metier.objects.filter(domaine=domaine)
+            ecoles = Ecole.objects.filter(departments=domaine)
+            metiers = Metier.objects.filter(departments=domaine)
             for ecole in ecoles:
                 schoolSet.add(ecole.id)
             for metier in metiers:
