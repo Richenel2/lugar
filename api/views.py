@@ -74,7 +74,7 @@ def corrige(request):
         question = get_object_or_404(Question, pk=rep['id'])
         schoolSet = set()
         metierSet = set()
-        for domaine in question.domaines:
+        for domaine in question.domaines.query:
             ecoles = Ecole.objects.filter(domaine=domaine)
             metiers = Metier.objects.filter(domaine=domaine)
             for ecole in ecoles:
