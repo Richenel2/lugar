@@ -94,8 +94,8 @@ def corrige(request):
                 met[sch] = point
         school = dict(sorted(school.items(), key=lambda item: item[1]))
         met = dict(sorted(met.items(), key=lambda item: item[1]))
-        school = school.keys()[:3]
-        met = met.keys()[:3]
+        school =list( school.keys())[:3]
+        met = list(met.keys())[:3]
     return Response(list(map(lambda x: EcoleSerializer(get_object_or_404(Ecole, pk=x)).data, school)))
 
 
