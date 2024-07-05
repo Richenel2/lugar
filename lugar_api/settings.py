@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jq1a%kb8a1#hf9$f@(m**ua%y(52l8#k*g06ur%99qec*&35ls
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = True
-ALLOWED_HOSTS = ['kayra.alwaysdata.net', '127.0.0.1', "*"]
+ALLOWED_HOSTS = ['https://lugar-sarls.onrender.com', '127.0.0.1', "*"]
 
 
 # Application definition
